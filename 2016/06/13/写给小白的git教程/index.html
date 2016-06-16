@@ -1,0 +1,919 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git," />
+
+
+
+
+
+  <link rel="alternate" href="http://okycode.com" title="OkyCode" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/avatar.png?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="这是一个故事众所周知，Linux 创建于1991年，其内核开源项目有着为数众广的参与者，这么多人在世界各地为 Linux 编写代码，那 Linux 的代码是如何管理的呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写给小白的git教程">
+<meta property="og:url" content="http://okycode.com/2016/06/13/写给小白的git教程/index.html">
+<meta property="og:site_name" content="OkyCode">
+<meta property="og:description" content="这是一个故事众所周知，Linux 创建于1991年，其内核开源项目有着为数众广的参与者，这么多人在世界各地为 Linux 编写代码，那 Linux 的代码是如何管理的呢？">
+<meta property="og:image" content="http://okycode.com/images/scmhistory.png">
+<meta property="og:updated_time" content="2016-06-15T06:49:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="写给小白的git教程">
+<meta name="twitter:description" content="这是一个故事众所周知，Linux 创建于1991年，其内核开源项目有着为数众广的参与者，这么多人在世界各地为 Linux 编写代码，那 Linux 的代码是如何管理的呢？">
+<meta name="twitter:image" content="http://okycode.com/images/scmhistory.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 写给小白的git教程 | OkyCode </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">OkyCode</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                写给小白的git教程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-13T16:09:20+08:00" content="2016-06-13">
+              2016-06-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/13/写给小白的git教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/写给小白的git教程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+         
+       &nbsp; | &nbsp;
+       <span id="/2016/06/13/写给小白的git教程/"class="leancloud_visitors"  data-flag-title="写给小白的git教程">
+             &nbsp;人喜欢
+            </span>
+      
+
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/images/scmhistory.png" rel="gallery_cipho0iiq0005k7s6qmxmvltk"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/scmhistory.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h3 id="这是一个故事"><a href="#这是一个故事" class="headerlink" title="这是一个故事"></a>这是一个故事</h3><p>众所周知，Linux 创建于1991年，其内核开源项目有着为数众广的参与者，这么多人在世界各地为 Linux 编写代码，那 Linux 的代码是如何管理的呢？</p>
+<a id="more"></a>
+<p>事实上，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给 Linus Torvalds（ Linux 之父 ），然后由 Linus Torvalds 本人通过手工方式合并代码！</p>
+<p>你会想象这是多么糟糕的一个情景，那么 Linus Torvalds 为什么不把 Linux 代码放到版本控制系统里呢？不是有 CVS、SVN 这些免费的版本控制系统吗？因为 Linus Torvalds 坚定地反对 CVS 和 SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比 CVS、SVN 好用，但那是付费的，和Linux的开源精神不符，Free，自由！</p>
+<p>到了2002年，伴随着 Linux 代码库不断壮大，让 Linus Torvalds 很难继续通过手工方式管理了，于是 Linus Torvalds 不得不选择一款版本控制系统来管理 Linux,而 BitMover 的版本控制软件 BitKeeper 无疑是当时最好的选择，但 BitKeeper 是除商业付费版仅提供可免费使用但不允许修改释出的精简版本，这引起开社区群的不满，如自由软件之父 Richard Stallman 也严厉批评 Linus Torvalds 使用非自由软件开发 Linux核心。BitKeeper 的启用确实大大提高了不少 Linux 开发的效率。</p>
+<p>生活总是充满意外，生活中总会有那么几个不按套路出牌的人。</p>
+<p>在2005年，Samba 文件服务器开发人 Andrew Tridgell 写了个链接 BitKeeper 存储库的简单程式，呗 BitMover 创办人 Larry McVoy 指控对 BitKeeper 进行逆向工程，因此决定停止 BitKeeper 对 Linux 的支援，顿时 Linux 核心开发受到严峻挑战。</p>
+<p>按理说，手下小弟犯错了，老大站出来向 BitMover 公司公开道个歉，并保证以后严格管教下面兄弟们。呃，好像这是不可能的。</p>
+<p>Linus Torvalds 秉持「自己的版控自己写」，并基于使用 BitKcheper 时的经验教训，狂撸了三天三夜，隔周却如变戏法般的带着 Git 出现，这就是 Git！</p>
+<p>历史就是这么偶然，同生活中的许多伟大事物一样，Git 诞生于一个极富纷争大举创新的年代</p>
+<p>他们对新的系统制订了若干目标：</p>
+<ul>
+<li><p>速度</p>
+</li>
+<li><p>简单的设计</p>
+</li>
+<li><p>对非线性开发模式的强力支持（允许成千上万个并行开发的分支）</p>
+</li>
+<li><p>完全分布式</p>
+</li>
+<li><p>有能力高效管理类似 Linux 内核一样的超大规模项目（速度和数据量）</p>
+</li>
+</ul>
+<p>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</p>
+<h3 id="在Mac-OS-X上安装Git"><a href="#在Mac-OS-X上安装Git" class="headerlink" title="在Mac OS X上安装Git"></a>在Mac OS X上安装Git</h3><p>最简单的方法是 AppStore 下载安装 Xcode，大家都知道 Xcode 是 Mac 和 IOS 的 IDE，它集成了一些好用的工具，包括 Git。安装好后，打开终端<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git version</span><br></pre></td></tr></table></figure></p>
+<p>这时你会看到git的版本信息，说明你可以开始使用git了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version <span class="number">2.7</span>.4 (Apple Git-<span class="number">66</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用前配置-用户配置"><a href="#使用前配置-用户配置" class="headerlink" title="使用前配置,用户配置"></a>使用前配置,用户配置</h3><p>配置用户信息，每次git提交时都会引用这两条信息，说明是谁提交的。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"your_name"</span></span><br><span class="line">$ git config --global user.email <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure></p>
+<p>使用 <code>--global</code> 是指全局的，配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。</p>
+<h3 id="更改局部配置"><a href="#更改局部配置" class="headerlink" title="更改局部配置"></a>更改局部配置</h3><p>如果你想要在某个特定的项目中使用其他名字或者电邮，而又配置了 <code>--global</code> 配置,你可以这样，定位到当前目录，值得注意的是这个目录必须已经是git仓库，否则会报 <code>fatal: not in a git directory</code>错误，下面我们会讲如何创建一个git仓库。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name <span class="string">"new_name"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br></pre></td></tr></table></figure>
+<h3 id="如何创建一个git仓库"><a href="#如何创建一个git仓库" class="headerlink" title="如何创建一个git仓库"></a>如何创建一个git仓库</h3><p>首先，选择一个合适的地方，创建一个空目录：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir mygit</span><br><span class="line">$ cd mygit</span><br><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in /Users/Documents/mygit/.git/</span><br></pre></td></tr></table></figure></p>
+<p>这里的 <code>mygit</code> 就是我们创建的git仓库了，对，就是这么简单！<code>.git/</code>目录就是Git用来跟踪管理版本库的，细心的你会发现，<code>mygit</code> 目录文件下并没有看到 <code>.git</code>啊，那是因为这是个隐藏目录。这里我教大家两个实用的命令 ：<code>pwd</code> 用于显示当前目录; <code>ls -a</code> 查看目录下所有文件，这里包含隐藏目录。</p>
+<h3 id="添加文件到版本库"><a href="#添加文件到版本库" class="headerlink" title="添加文件到版本库"></a>添加文件到版本库</h3><p>上面我们建了一个空的git仓库，现在我们要添加一个文件到我们仓库，首先创建一个 <code>myfile.txt</code> 的文件，使用 <code>git add myfile.txt</code> 添加文件到仓库，此命令可以执行多次添加多个文件，也可以使用 <code>git add .</code>添加所有文件到仓库，然后使用 <code>git commit -m &quot;desc&quot;</code>提交到仓库，<code>-m</code> 添加修改描述。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add myfile</span><br><span class="line">$ git commit -m <span class="string">"desc"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="查看版本库状态"><a href="#查看版本库状态" class="headerlink" title="查看版本库状态"></a>查看版本库状态</h3><p>用于查看仓库文件状态，哪些新添加，哪些删除的，哪些是修改的。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看修改"><a href="#查看修改" class="headerlink" title="查看修改"></a>查看修改</h3><p>用于查看文件做了哪些修改。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff myfile</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看历史纪录"><a href="#查看历史纪录" class="headerlink" title="查看历史纪录"></a>查看历史纪录</h3><p>用于查看我们历史提交纪录。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit <span class="number">7</span>cb5f767328802ac97876f96acf947dcb506cc4e</span><br><span class="line">Author: okycode &lt;your_email<span class="meta">@example</span>.com&gt;</span><br><span class="line">Date:   Tue Jun <span class="number">14</span> <span class="number">18</span>:<span class="number">24</span>:<span class="number">32</span> <span class="number">2016</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    我是这次修改的描述</span><br><span class="line"></span><br><span class="line">commit <span class="number">62</span>b22f52ddfce5851e04689f0c6a62fafe487c9a</span><br><span class="line">Author: okycode &lt;your_email<span class="meta">@example</span>.com&gt;</span><br><span class="line">Date:   Tue Jun <span class="number">14</span> <span class="number">17</span>:<span class="number">34</span>:<span class="number">50</span> <span class="number">2016</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    我是这次修改的描述</span><br></pre></td></tr></table></figure></p>
+<p>这里的 <code>7cb5f7...06cc4e</code>是我门的 <code>commit id</code>（版本号）。如果嫌输出信息太乱，看着比较乱，有没有简洁输出的方法，不妨添加 <code>--pretty=oneline</code>参数试试看呢。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line"><span class="number">7</span>cb5f767328802ac97876f96acf947dcb506cc4e 我是这次修改的描述</span><br><span class="line"><span class="number">62</span>b22f52ddfce5851e04689f0c6a62fafe487c9a 我是这次修改的描述</span><br></pre></td></tr></table></figure></p>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>不好，我们不小心提交了一个修改错误文件，怎么办，有没有方法让我们撤回上个版本呢,当然有了，那不岂不是很low。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard <span class="number">7</span>cb5f76...b506cc4e</span><br></pre></td></tr></table></figure></p>
+<p>现在，你回退到了某个版本，电脑也关机了，第二天早上就后悔了，想恢复到新版本怎么办？但又找不到新版本的 <code>commit id</code> 了怎么办？</p>
+<p>在Git中，总是有后悔药可以吃的，Git提供了一个命令 <code>git reflog</code> 用来记录你的每一次命令：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line"><span class="number">62</span>b22f5 HEAD@&#123;<span class="number">0</span>&#125;: reset: moving to HEAD^</span><br><span class="line"><span class="number">7</span>cb5f76 HEAD@&#123;<span class="number">1</span>&#125;: commit: 我是这次修改的描述</span><br><span class="line"><span class="number">62</span>b22f5 HEAD@&#123;<span class="number">2</span>&#125;: commit (initial): 我是这次修改的描述</span><br></pre></td></tr></table></figure></p>
+<p>如果你只是想回到上个版本，你可以命令 <code>git reset --hard HEAD^</code>即可，在Git中，用 <code>HEAD</code> 表示当前版本。上上一个版本就是 <code>HEAD^^</code>，往上100个版本总不能写100个 <code>^</code> 吧，当然那样也不是不可以，不过我一般会写成 <code>HEAD~100</code> 这样。</p>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>使用命令 <code>git checkout -- myfile</code>，可以把 <code>myfile</code>文件在工作区的修改全部撤销，这里注意 <code>--</code> 的使用是和 <code>myfile</code>文件件有<code>空格</code>的。如果此时文件已经 <code>add</code> 或 <code>commit</code> 暂缓区，那么撤销状态为放入暂缓区的状态，如果你想撤销到放入暂缓区之前的状态，你可以结合 <code>版本回退</code> 然后再去撤销。</p>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><p>说到远程仓库首先我们会想到 <code>Github</code>,这是一个神奇的网站，它提供了Git仓库托管服务的，你只需要注册一个自己的账号就可以使用了。不过在创建 Github 免费远程仓库之前我们要做一些准备工作：</p>
+<ul>
+<li><p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="external">创建 SSH keys 用于你的计算机和 Github 托管服务的验证传输</a></p>
+</li>
+<li><p><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" target="_blank" rel="external">添加 SSH keys 到你的 Github 账号下</a></p>
+</li>
+</ul>
+<blockquote>
+<p>具体配置详见 <a href="https://help.github.com/articles/generating-an-ssh-key/" target="_blank" rel="external">官方帮助文档</a></p>
+</blockquote>
+<p>在GitHub上创建一个空的 <code>mygit</code> 仓库，如下图<br><img src="/images/19A6435E-B5D9-4631-9BBD-198CE596800A.png" alt="Alt Image Text"></p>
+<h3 id="推送一个存在的本地仓库到远程仓库"><a href="#推送一个存在的本地仓库到远程仓库" class="headerlink" title="推送一个存在的本地仓库到远程仓库"></a>推送一个存在的本地仓库到远程仓库</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git<span class="meta">@github</span>.com:utouch/mygit.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="出现-SSH警告"><a href="#出现-SSH警告" class="headerlink" title="出现 SSH警告"></a>出现 SSH警告</h3><p>当你第一次使用 <code>Git</code> 的 <code>clone</code> 或者 <code>push</code> 命令连接GitHub时，会得到一个警告：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host 'github.com (xx.xx.xx.xx)' can't be established.</span><br><span class="line">RSA key fingerprint is xx.xx.xx.xx.xx.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
+<p>这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入yes回车即可。</p>
+<p>Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added <span class="string">'github.com'</span> (RSA) to the list of known hosts.</span><br></pre></td></tr></table></figure></p>
+<p>这个警告只会出现一次，后面的操作就不会有任何警告了。</p>
+<h3 id="出现-remote-origin-already-exists-错误提示"><a href="#出现-remote-origin-already-exists-错误提示" class="headerlink" title="出现 remote origin already exists 错误提示"></a>出现 remote origin already exists 错误提示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm origin</span><br><span class="line">$ git remote add origin git<span class="meta">@github</span>.com:*</span><br></pre></td></tr></table></figure>
+<h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git<span class="meta">@github</span>.com:utouch/mygit.git</span><br></pre></td></tr></table></figure>
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="切换当前分支"><a href="#切换当前分支" class="headerlink" title="切换当前分支"></a>切换当前分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="查看分支，-标记为当前分支"><a href="#查看分支，-标记为当前分支" class="headerlink" title="查看分支，* 标记为当前分支"></a>查看分支，* 标记为当前分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure>
+<h3 id="查看远程分支，远程分支会用红色表示出来（如果你开了颜色支持的话）"><a href="#查看远程分支，远程分支会用红色表示出来（如果你开了颜色支持的话）" class="headerlink" title="查看远程分支，远程分支会用红色表示出来（如果你开了颜色支持的话）"></a>查看远程分支，远程分支会用红色表示出来（如果你开了颜色支持的话）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a</span><br></pre></td></tr></table></figure>
+<h3 id="推送分支到远程仓库，origin为远程仓库，mybranch为本地分支"><a href="#推送分支到远程仓库，origin为远程仓库，mybranch为本地分支" class="headerlink" title="推送分支到远程仓库，origin为远程仓库，mybranch为本地分支"></a>推送分支到远程仓库，origin为远程仓库，mybranch为本地分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="也可以使用这种语法，推送一个空分支到远程分支，相当于删除远程分支"><a href="#也可以使用这种语法，推送一个空分支到远程分支，相当于删除远程分支" class="headerlink" title="也可以使用这种语法，推送一个空分支到远程分支，相当于删除远程分支"></a>也可以使用这种语法，推送一个空分支到远程分支，相当于删除远程分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin :mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="重命名本地分支"><a href="#重命名本地分支" class="headerlink" title="重命名本地分支"></a>重命名本地分支</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -m mybranch develop</span><br></pre></td></tr></table></figure>
+<h3 id="合并分支，把分支mybranch合并到master"><a href="#合并分支，把分支mybranch合并到master" class="headerlink" title="合并分支，把分支mybranch合并到master"></a>合并分支，把分支mybranch合并到master</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ git merge master mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="提交修改到远程仓库"><a href="#提交修改到远程仓库" class="headerlink" title="提交修改到远程仓库"></a>提交修改到远程仓库</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin mybranch</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>Git参考手册：<a href="http://gitref.org/zh/index.html" target="_blank" rel="external">http://gitref.org/zh/index.html</a><br>大谈Git开发：<a href="http://www.ithome.com.tw/news/95088" target="_blank" rel="external">http://www.ithome.com.tw/news/95088</a><br>Pro Git（中文版）：<a href="http://git.oschina.net/progit/" target="_blank" rel="external">http://git.oschina.net/progit/</a><br>git官网 ：<a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a><br>官网文档 ：<a href="https://git-scm.com/docs" target="_blank" rel="external">https://git-scm.com/docs</a></p>
+<blockquote>
+<h2 id="如果觉得我的文章对您有用，请扫面关注下方微信公众号，以了解文章最新动态！"><a href="#如果觉得我的文章对您有用，请扫面关注下方微信公众号，以了解文章最新动态！" class="headerlink" title="如果觉得我的文章对您有用，请扫面关注下方微信公众号，以了解文章最新动态！"></a>如果觉得我的文章对您有用，请扫面关注下方微信公众号，以了解文章最新动态！</h2></blockquote>
+<p><img src="/images/my_weixin.jpg" alt="Alt Image Text" title="微信公众号 okycode"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/25/浅谈数据结构之链表/" rel="next" title="浅谈数据结构之链表">
+                <i class="fa fa-chevron-left"></i> 浅谈数据结构之链表
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/15/手把手教你如何生成一个-Android-Demo示例-GIF-动态图演示图/" rel="prev" title="手把手教你如何生成一个 Android Demo 示例的 GIF 动态演示图">
+                手把手教你如何生成一个 Android Demo 示例的 GIF 动态演示图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/13/写给小白的git教程/"
+           data-title="写给小白的git教程" data-url="http://okycode.com/2016/06/13/写给小白的git教程/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="别说话，吻我" />
+          <p class="site-author-name" itemprop="name">别说话，吻我</p>
+          <p class="site-description motion-element" itemprop="description">不要在该奋斗的年龄，选择了安逸</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://okycode.com" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/utouch" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/your-user-name" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2678525923" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank" rel="external nofollow">MacTalk</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#这是一个故事"><span class="nav-number">1.</span> <span class="nav-text">这是一个故事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Mac-OS-X上安装Git"><span class="nav-number">2.</span> <span class="nav-text">在Mac OS X上安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用前配置-用户配置"><span class="nav-number">3.</span> <span class="nav-text">使用前配置,用户配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改局部配置"><span class="nav-number">4.</span> <span class="nav-text">更改局部配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看配置信息"><span class="nav-number">5.</span> <span class="nav-text">查看配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何创建一个git仓库"><span class="nav-number">6.</span> <span class="nav-text">如何创建一个git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文件到版本库"><span class="nav-number">7.</span> <span class="nav-text">添加文件到版本库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本库状态"><span class="nav-number">8.</span> <span class="nav-text">查看版本库状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看修改"><span class="nav-number">9.</span> <span class="nav-text">查看修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看历史纪录"><span class="nav-number">10.</span> <span class="nav-text">查看历史纪录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">11.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">12.</span> <span class="nav-text">撤销修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库"><span class="nav-number">13.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送一个存在的本地仓库到远程仓库"><span class="nav-number">14.</span> <span class="nav-text">推送一个存在的本地仓库到远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出现-SSH警告"><span class="nav-number">15.</span> <span class="nav-text">出现 SSH警告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出现-remote-origin-already-exists-错误提示"><span class="nav-number">16.</span> <span class="nav-text">出现 remote origin already exists 错误提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从远程库克隆"><span class="nav-number">17.</span> <span class="nav-text">从远程库克隆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分支"><span class="nav-number">18.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换当前分支"><span class="nav-number">19.</span> <span class="nav-text">切换当前分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建并切换分支"><span class="nav-number">20.</span> <span class="nav-text">创建并切换分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看分支，-标记为当前分支"><span class="nav-number">21.</span> <span class="nav-text">查看分支，* 标记为当前分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看远程分支，远程分支会用红色表示出来（如果你开了颜色支持的话）"><span class="nav-number">22.</span> <span class="nav-text">查看远程分支，远程分支会用红色表示出来（如果你开了颜色支持的话）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送分支到远程仓库，origin为远程仓库，mybranch为本地分支"><span class="nav-number">23.</span> <span class="nav-text">推送分支到远程仓库，origin为远程仓库，mybranch为本地分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除本地分支"><span class="nav-number">24.</span> <span class="nav-text">删除本地分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除远程分支"><span class="nav-number">25.</span> <span class="nav-text">删除远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#也可以使用这种语法，推送一个空分支到远程分支，相当于删除远程分支"><span class="nav-number">26.</span> <span class="nav-text">也可以使用这种语法，推送一个空分支到远程分支，相当于删除远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重命名本地分支"><span class="nav-number">27.</span> <span class="nav-text">重命名本地分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并分支，把分支mybranch合并到master"><span class="nav-number">28.</span> <span class="nav-text">合并分支，把分支mybranch合并到master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交修改到远程仓库"><span class="nav-number">29.</span> <span class="nav-text">提交修改到远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">30.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果觉得我的文章对您有用，请扫面关注下方微信公众号，以了解文章最新动态！"><span class="nav-number"></span> <span class="nav-text">如果觉得我的文章对您有用，请扫面关注下方微信公众号，以了解文章最新动态！</span></a></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">别说话，吻我</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"okycode"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+
+
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("WXIYISPCvdbqLJBHfkbEVoXa-gzGzoHsz", "QgelOzLHzKl5k9kejk9lewsV");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+</body>
+</html>
